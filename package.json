@@ -1,0 +1,62 @@
+{
+  "name": "boundary.now",
+  "version": "1.0.0",
+  "description": "a simple interface to download data from Nominatim geocoding results",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --config webpack/webpack.config.prod.js",
+    "build-dev": "webpack --config webpack/webpack.config.dev.js",
+    "watch": "webpack --config webpack/webpack.config.dev.js --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/haoliangyu/boundary.now.git"
+  },
+  "author": "Haoliang Yu <haholiang.yu@outlook.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/haoliangyu/boundary.now/issues"
+  },
+  "homepage": "https://github.com/haoliangyu/boundary.now#readme",
+  "devDependencies": {
+    "css-loader": "^0.26.1",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "file-loader": "^0.9.0",
+    "html-webpack-plugin": "^2.26.0",
+    "less": "^2.7.2",
+    "less-loader": "^2.2.3",
+    "optimize-css-assets-webpack-plugin": "^1.3.0",
+    "optimize-js-plugin": "^0.0.4",
+    "raw-loader": "^0.5.1",
+    "script-ext-html-webpack-plugin": "^1.5.0",
+    "style-loader": "^0.13.1",
+    "to-string-loader": "^1.1.5",
+    "ts-loader": "^2.0.0",
+    "tslint": "^4.3.2",
+    "tslint-loader": "^3.3.0",
+    "typescript": "^2.1.5",
+    "url-loader": "^0.5.7",
+    "webpack": "^1.14.0",
+    "webpack-cleanup-plugin": "^0.4.1"
+  },
+  "dependencies": {
+    "@angular/common": "^2.4.5",
+    "@angular/compiler": "^2.4.5",
+    "@angular/core": "^2.4.5",
+    "@angular/flex-layout": "^2.0.0-beta.4",
+    "@angular/forms": "^2.4.5",
+    "@angular/http": "^2.4.5",
+    "@angular/material": "^2.0.0-beta.1",
+    "@angular/platform-browser": "^2.4.5",
+    "@angular/platform-browser-dynamic": "^2.4.5",
+    "@types/es6-shim": "^0.31.32",
+    "@types/file-saver": "^0.0.0",
+    "@types/leaflet": "^1.0.50",
+    "file-saver": "^1.3.3",
+    "font-awesome": "^4.7.0",
+    "leaflet": "^1.0.3",
+    "reflect-metadata": "^0.1.9",
+    "rxjs": "^5.0.3",
+    "zone.js": "^0.7.6"
+  }
+}
