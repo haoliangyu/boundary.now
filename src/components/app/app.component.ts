@@ -42,7 +42,7 @@ export default class AppComponent {
     this.results = [];
 
     this.http
-        .get(`http://nominatim.openstreetmap.org/search?q=${encodeURIComponent(this.placeName)}&format=json&limit=10&polygon_geojson=1`)
+        .get(`https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(this.placeName)}&format=json&limit=10&polygon_geojson=1`)
         .map(res => res.json())
         .finally(() => {
           this.isGeocoding = false;
