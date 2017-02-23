@@ -14,7 +14,7 @@
     <md-card>
       <md-card-title>Search place boundary</md-card-title>
       <md-input-container class="search-box">
-        <input md-input
+        <input mdInput
                placeholder="place name"
                [(ngModel)]="placeName"
                (keyup.enter)="search()">
@@ -53,6 +53,11 @@
               (click)="downloadGeoJSON(result)"
               md-tooltip="Download boundary in GeoJSON format">
         GeoJSON
+      </button>
+      <button md-raised-button
+              (click)="downloadShapefile(result)"
+              md-tooltip="Download boundary in Shapefile format">
+        Shapefile
       </button>
     </md-card>
     <md-card class="search-result" *ngIf="noResult">

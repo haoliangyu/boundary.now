@@ -1,9 +1,14 @@
+/// <reference path='../../typings/shp-write.d.ts'/>
+
 import { Component } from '@angular/core';
 import { Http } from '@angular/http';
 import { MdDialog } from '@angular/material';
 import { saveAs } from 'file-saver';
+import { download as downloadShp } from 'shp-write';
+
 import AboutDialogComponent from '../about.dialog/about.dialog.component';
 import MapService from '../../services/map.service';
+import ConversionService from '../../services/conversion.service';
 
 @Component({
   selector: 'app',
@@ -11,7 +16,7 @@ import MapService from '../../services/map.service';
   styles: [
     require<any>('./app.component.less')
   ],
-  providers: [MapService]
+  providers: [MapService, ConversionService]
 })
 export default class AppComponent {
   private isGeocoding: boolean;
@@ -20,7 +25,7 @@ export default class AppComponent {
   private placeName: string;
   private selectedIndex: number;
 
-  constructor(private http: Http, private mapService: MapService, private dialog: MdDialog) {
+  constructor(private http: Http, private mapService: MapService, private conversionService: ConversionService, private dialog: MdDialog) {
     this.isGeocoding = false;
     this.noResult = false;
     this.results = [];
@@ -80,21 +85,20 @@ export default class AppComponent {
   }
 
   downloadGeoJSON(result) {
-    let cloned = JSON.parse(JSON.stringify(result));
-    delete cloned.geojson;
-
-    let geojson = {
-      type: 'FeatureCollection',
-      features: [
-        {
-          type: 'Feature',
-          geometry: result.geojson,
-          properties: cloned
-        }
-      ]
-    };
-
+    let geojson = this.conversionService.toFeatureCollection(result);
     let blob = new Blob([JSON.stringify(geojson)], { type: 'application/json' });
     saveAs(blob, 'boundary.geojson');
+  }
+
+  downloadShapefile(result) {
+    let geojson = this.conversionService.toFeatureCollection(result);
+    downloadShp(geojson, {
+      folder: 'boundary',
+      types: {
+        point: 'Point',
+        polygon: 'Polygon',
+        line: 'LineString'
+      }
+    });
   }
 }
