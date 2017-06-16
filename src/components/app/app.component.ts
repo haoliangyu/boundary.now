@@ -1,10 +1,14 @@
 /// <reference path='../../typings/shp-write.d.ts'/>
+/// <reference path='../../typings/tokml.d.ts'/>
 
+import { Observable } from 'rxjs';
 import { Component } from '@angular/core';
 import { Http } from '@angular/http';
 import { MdDialog } from '@angular/material';
 import { saveAs } from 'file-saver';
 import { download as downloadShp } from 'shp-write';
+import tokml = require('tokml');
+import JSZip = require('jszip');
 
 import AboutDialogComponent from '../about.dialog/about.dialog.component';
 import MapService from '../../services/map.service';
@@ -90,8 +94,23 @@ export default class AppComponent {
     saveAs(blob, 'boundary.geojson');
   }
 
+  downloadKMZ(result) {
+    let geojson = this.conversionService.toFeatureCollection(result);
+    let kml = tokml(geojson, { name: 'display_name' });
+
+    let zip = new JSZip();
+    zip.file('doc.kml', kml);
+
+    Observable.fromPromise(zip.generateAsync({ type: 'blob' }))
+      .subscribe((blob) => {
+        saveAs(blob, 'boundary.kmz');
+      });
+    // let blob = new Blob([JSON.stringify(geojson)], { type: 'application/json' });
+  }
+
   downloadShapefile(result) {
     let geojson = this.conversionService.toFeatureCollection(result);
+
     downloadShp(geojson, {
       folder: 'boundary',
       types: {

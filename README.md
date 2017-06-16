@@ -6,4 +6,9 @@
 
 Easily download boundaries from Nominatim geocoding results.
 
+**Support Format**
+* GeoJSON
+* Shapefile
+* KMZ
+
 Open the tool at [Boundary.Now](https://haoliangyu.github.io/boundary.now).

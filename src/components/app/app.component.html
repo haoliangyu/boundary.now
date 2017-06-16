@@ -59,6 +59,11 @@
               md-tooltip="Download boundary in Shapefile format">
         Shapefile
       </button>
+      <button md-raised-button
+              (click)="downloadKMZ(result)"
+              md-tooltip="Download boundary in KMZ format">
+        KMZ
+      </button>
     </md-card>
     <md-card class="search-result" *ngIf="noResult">
       <md-card-subtitle>No Result</md-card-subtitle>
