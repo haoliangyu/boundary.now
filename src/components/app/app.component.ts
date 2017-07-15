@@ -105,7 +105,6 @@ export default class AppComponent {
       .subscribe((blob) => {
         saveAs(blob, 'boundary.kmz');
       });
-    // let blob = new Blob([JSON.stringify(geojson)], { type: 'application/json' });
   }
 
   downloadShapefile(result) {
