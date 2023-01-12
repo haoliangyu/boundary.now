@@ -30,7 +30,7 @@
     "html-webpack-plugin": "^5.5.0",
     "less": "^2.7.2",
     "less-loader": "^11.1.0",
-    "mocha": "^3.5.3",
+    "mocha": "^10.2.0",
     "optimize-css-assets-webpack-plugin": "^6.0.1",
     "optimize-js-plugin": "^0.0.4",
     "raw-loader": "^0.5.1",
