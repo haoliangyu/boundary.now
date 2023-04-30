@@ -43,7 +43,7 @@
     "tslint-loader": "^3.4.2",
     "typescript": "^2.4.1",
     "url-loader": "^0.5.7",
-    "webpack": "^1.15.0",
+    "webpack": "^5.75.0",
     "webpack-cleanup-plugin": "^0.4.2"
   },
   "dependencies": {
